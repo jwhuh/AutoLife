@@ -4,6 +4,7 @@ __author__ = 'hao.jiang'
 
 import os
 import sys
+import thread
 import requests
 import socket
 import logging
@@ -47,7 +48,9 @@ def main():
     server.bind((HOST, serverport))
     print_log('proxy server', 'start')
 
-
+    try:
+        client_conn, source_address = server.accept()
+        thread.start_new_thread()
 
 
 if __name__ == "__main__":
